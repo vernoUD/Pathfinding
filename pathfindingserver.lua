@@ -1,5 +1,4 @@
 -- escort npc with combat & fleeing
--- follows 1 player, attacks others, runs when low hp
 -- comments explain the important bits, not every line
 
 local RunService = game:GetService("RunService")
