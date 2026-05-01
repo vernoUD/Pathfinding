@@ -33,7 +33,7 @@ local STUCK_TELEPORT_THRESHOLD = 4
 local STUCK_NUDGE_DISTANCE = 3
 
 local PATH_REBUILD_DIST = 10
-local PATH_REBUILD_COOLDOWN = 0.4   -- don't spam pathfinding, it's expensive
+local PATH_REBUILD_COOLDOWN = 0.4   -- don't spam pathfinding cause it's expensive
 local FOLLOW_STOP_DIST = 4
 
 local SPEED_NORMAL = 18
@@ -70,7 +70,7 @@ function NPCController.new(model: Model, assignedPlayer: Player?)
     local humanoid = model:FindFirstChildOfClass("Humanoid")
     local rootPart = model:FindFirstChild("HumanoidRootPart")
 
-    -- unanchor everything (builder sometimes leaves parts anchored)
+    -- unanchor everything in the npc model
     for _, desc in model:GetDescendants() do
         if desc:IsA("BasePart") then
             desc.Anchored = false
@@ -174,7 +174,7 @@ function NPCController:_stepPath(): boolean
 end
 
 -- rotate to face target. ONLY used in idle.
--- turning while moving makes the npc glitch out (trust me, i tried)
+-- turning while moving makes the npc glitch out 
 function NPCController:_faceTarget(target: Vector3)
     local root = self.rootPart :: BasePart
     local cf = root.CFrame
